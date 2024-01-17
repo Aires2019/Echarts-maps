@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>山西省</title>
+</head>
+<style>
+  .highcharts-credits {
+    display: none;
+  }
+  .highcharts-legend {
+    display: none;
+  }
+</style>
+<body><div id="map" style="width:800px;height: 500px;"></div>
+<script src="https://img.hcharts.cn/highmaps/highmaps.js"></script>
+<script src="https://data.jianshukeji.com/geochina/shanxi.js"></script>
+
+<script>
+// 随机数据
+var data = [
+  {"name":"临汾","value":42},
+  {"name":"吕梁","value":81},
+  {"name":"大同","value":94},
+  {"name":"太原","value":8},
+  {"name":"忻州","value":67},
+  {"name":"晋中","value":38},
+  {"name":"晋城","value":17},
+  {"name":"朔州","value":7},
+  {"name":"运城","value":9},
+  {"name":"长治","value":77},
+  {"name":"阳泉","value":78}];
+// 初始化图表
+var map = new Highcharts.Map('map', {
+  title: {
+    text: '山西省'
+  },
+  colorAxis: {
+    min: 0,
+    minColor: 'rgb(255,255,255)',
+    maxColor: '#006cee'
+  },
+  series: [{
+    data: data,
+    name: '车辆销售',
+    mapData: Highcharts.maps['cn/shanxi'],
+    joinBy: 'name', // 根据 name 属性进行关联
+    states: {
+			hover: {
+				color: '#000'
+			}
+		},
+    dataLabels: {
+			enabled: true,
+			format: '{point.name}'
+		}
+  }]
+});
+</script></body></html>
